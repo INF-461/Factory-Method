@@ -1,0 +1,93 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1050" viewBox="0 0 1500 1050">
+<defs>
+  <marker id="inherit" markerWidth="16" markerHeight="16" refX="14" refY="8" orient="auto">
+    <path d="M1,1 L14,8 L1,15 Z" fill="white" stroke="black" stroke-width="1.3"/>
+  </marker>
+  <marker id="depend" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+    <path d="M1,1 L10,6 L1,11" fill="none" stroke="#2457A6" stroke-width="1.3"/>
+  </marker>
+  <style>
+    .classbox { fill:#ffffff; stroke:#202020; stroke-width:2; }
+    .heading { font-family:Arial,sans-serif; font-size:21px; font-weight:bold; }
+    .method { font-family:Arial,sans-serif; font-size:16px; }
+    .abstract { font-family:Arial,sans-serif; font-size:14px; font-style:italic; }
+    .inheritance { fill:none; stroke:#202020; stroke-width:2.2; marker-end:url(#inherit); }
+    .dependency { fill:none; stroke:#2457A6; stroke-width:2; stroke-dasharray:9 6; marker-end:url(#depend); }
+  </style>
+</defs>
+
+<rect width="1500" height="1050" fill="white"/>
+<text x="750" y="45" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold">FACTORY METHOD - VERSION MODIFIEE</text>
+<text x="750" y="75" text-anchor="middle" font-family="Arial" font-size="16" fill="#555">Diagramme de classes UML - Oyoki</text>
+
+<!-- DEPENDANCE CLIENT VERS FABRIQUE -->
+<path class="dependency" d="M410 175 L1040 175"/>
+<text x="725" y="160" text-anchor="middle" font-family="Arial" font-size="14" fill="#2457A6">dépendance</text>
+
+<!-- DEPENDANCE FABRIQUE VERS PRODUIT -->
+<path class="dependency" d="M1190 260 L1190 390 L750 390 L750 455"/>
+<text x="980" y="375" text-anchor="middle" font-family="Arial" font-size="14" fill="#2457A6">dépendance</text>
+
+<!-- HERITAGES -->
+<path class="inheritance" d="M180 800 L180 690 L750 690 L750 590"/>
+<path class="inheritance" d="M560 800 L560 650 L750 650 L750 590"/>
+<path class="inheritance" d="M940 800 L940 650 L750 650 L750 590"/>
+<path class="inheritance" d="M1320 800 L1320 690 L750 690 L750 590"/>
+
+<!-- CLIENT -->
+<rect class="classbox" x="110" y="105" width="300" height="150"/>
+<rect x="110" y="105" width="300" height="48" fill="#DCEBFA" stroke="#202020" stroke-width="2"/>
+<text class="heading" x="260" y="137" text-anchor="middle">Client</text>
+<line x1="110" y1="153" x2="410" y2="153" stroke="black"/>
+<text class="method" x="125" y="184">+ main(args : String[]) : void</text>
+
+<!-- FABRIQUE -->
+<rect class="classbox" x="1040" y="105" width="300" height="155"/>
+<rect x="1040" y="105" width="300" height="48" fill="#DCEBFA" stroke="#202020" stroke-width="2"/>
+<text class="heading" x="1190" y="137" text-anchor="middle">FabriqueProduit</text>
+<line x1="1040" y1="153" x2="1340" y2="153" stroke="black"/>
+<text class="method" x="1055" y="185">+ createProduit(type : String)</text>
+<text class="method" x="1055" y="211">  : Produit</text>
+
+<!-- PRODUIT ABSTRAIT -->
+<rect class="classbox" x="575" y="455" width="350" height="135"/>
+<rect x="575" y="455" width="350" height="48" fill="#FCE8C8" stroke="#202020" stroke-width="2"/>
+<text class="abstract" x="750" y="475" text-anchor="middle">« abstract »</text>
+<text class="heading" x="750" y="495" text-anchor="middle">Produit</text>
+<line x1="575" y1="503" x2="925" y2="503" stroke="black"/>
+<text class="method" x="595" y="540">+ methodeproduit() : void</text>
+
+<!-- PRODUIT A -->
+<rect class="classbox" x="45" y="800" width="270" height="135"/>
+<rect x="45" y="800" width="270" height="48" fill="#E2F2E5" stroke="#202020" stroke-width="2"/>
+<text class="heading" x="180" y="832" text-anchor="middle">ProduitA</text>
+<line x1="45" y1="848" x2="315" y2="848" stroke="black"/>
+<text class="method" x="60" y="885">+ methodeproduit() : void</text>
+
+<!-- PRODUIT B -->
+<rect class="classbox" x="425" y="800" width="270" height="135"/>
+<rect x="425" y="800" width="270" height="48" fill="#E2F2E5" stroke="#202020" stroke-width="2"/>
+<text class="heading" x="560" y="832" text-anchor="middle">ProduitB</text>
+<line x1="425" y1="848" x2="695" y2="848" stroke="black"/>
+<text class="method" x="440" y="885">+ methodeproduit() : void</text>
+
+<!-- PRODUIT C -->
+<rect class="classbox" x="805" y="800" width="270" height="135"/>
+<rect x="805" y="800" width="270" height="48" fill="#E2F2E5" stroke="#202020" stroke-width="2"/>
+<text class="heading" x="940" y="832" text-anchor="middle">ProduitC</text>
+<line x1="805" y1="848" x2="1075" y2="848" stroke="black"/>
+<text class="method" x="820" y="885">+ methodeproduit() : void</text>
+
+<!-- PRODUIT D -->
+<rect class="classbox" x="1185" y="800" width="270" height="135"/>
+<rect x="1185" y="800" width="270" height="48" fill="#FCE8C8" stroke="#202020" stroke-width="2"/>
+<text class="heading" x="1320" y="832" text-anchor="middle">ProduitD</text>
+<line x1="1185" y1="848" x2="1455" y2="848" stroke="black"/>
+<text class="method" x="1200" y="885">+ methodeproduit() : void</text>
+
+<!-- LEGENDE -->
+<line x1="150" y1="990" x2="230" y2="990" stroke="#202020" stroke-width="2.2" marker-end="url(#inherit)"/>
+<text x="245" y="996" font-family="Arial" font-size="15">Héritage</text>
+<line x1="470" y1="990" x2="550" y2="990" stroke="#2457A6" stroke-width="2" stroke-dasharray="9 6" marker-end="url(#depend)"/>
+<text x="565" y="996" font-family="Arial" font-size="15">Dépendance</text>
+</svg>

@@ -1,0 +1,249 @@
+﻿FACTORY METHOD - VERSION COURS
+
+
+========== Client.java ==========
+public class Client {
+
+    public static void main(String[] args) {
+
+        System.out.println("bonjour le monde");
+
+        FabriqueProduit fabriqueproduit = new FabriqueProduit();
+
+        Produit produit = null;
+
+        // Affiche un produit de type A
+        produit = fabriqueproduit.createProduit(fabriqueproduit.typeA);
+        produit.methodeproduit();
+
+        // Affiche un produit de type B
+        produit = fabriqueproduit.createProduit(fabriqueproduit.typeB);
+        produit.methodeproduit();
+
+        // Affiche un produit de type C
+        produit = fabriqueproduit.createProduit(fabriqueproduit.typeC);
+        produit.methodeproduit();
+
+        // Produit inexistant
+        String d = "D";
+        try {
+            produit = fabriqueproduit.createProduit(d);
+            produit.methodeproduit();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erreur attendue : " + e.getMessage());
+        }
+    }
+}
+
+
+========== FabriqueProduit.java ==========
+public class FabriqueProduit {
+
+    public static final String typeA = "A";
+    public static final String typeB = "B";
+    public static final String typeC = "C";
+
+    public Produit createProduit(String type) {
+
+        Produit produit = null;
+
+        switch(type) {
+
+            case typeA:
+                produit = new ProduitA();
+                break;
+
+            case typeB:
+                produit = new ProduitB();
+                break;
+
+            case typeC:
+                produit = new ProduitC();
+                break;
+
+            default:
+                throw new IllegalArgumentException("Type de produit inconnu");
+        }
+
+        return produit;
+    }
+}
+
+
+========== Produit.java ==========
+
+public abstract class Produit {
+
+    public abstract void methodeproduit();
+
+}
+
+
+========== ProduitA.java ==========
+public class ProduitA extends Produit {
+
+    public ProduitA() {
+
+    }
+
+    public void methodeproduit() {
+        System.out.println("je suis un produit de type A");
+        System.out.println("produitA.methodeproduit()");
+    }
+}
+
+
+========== ProduitB.java ==========
+public class ProduitB extends Produit {
+
+    public void methodeproduit() {
+        System.out.println("je suis un produit de type B");
+        System.out.println("produitB.methodeproduit()");
+    }
+}
+
+
+========== ProduitC.java ==========
+public class ProduitC extends Produit {
+
+    public void methodeproduit() {
+        System.out.println("je suis un produit de type C");
+        System.out.println("produitC.methodeproduit()");
+    }
+}
+
+
+FACTORY METHOD - VERSION MODIFIEE
+
+
+========== Client.java ==========
+
+public class Client {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== TEST DU PATRON FACTORY METHOD ===");
+
+        FabriqueProduit fabriqueproduit = new FabriqueProduit();
+
+        Produit produit;
+
+        // Produit A
+        produit = fabriqueproduit.createProduit(FabriqueProduit.typeA);
+        produit.methodeproduit();
+
+        // Produit B
+        produit = fabriqueproduit.createProduit(FabriqueProduit.typeB);
+        produit.methodeproduit();
+
+        // Produit C
+        produit = fabriqueproduit.createProduit(FabriqueProduit.typeC);
+        produit.methodeproduit();
+
+        // Produit D
+        produit = fabriqueproduit.createProduit(FabriqueProduit.typeD);
+        produit.methodeproduit();
+
+        // Test d'un produit inexistant
+        try {
+            produit = fabriqueproduit.createProduit("X");
+            produit.methodeproduit();
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erreur contrÃ´lÃ©e : " + e.getMessage());
+        }
+
+        System.out.println("=== FIN DES TESTS ===");
+    }
+}
+
+
+========== FabriqueProduit.java ==========
+
+public class FabriqueProduit {
+
+    public static final String typeA = "A";
+    public static final String typeB = "B";
+    public static final String typeC = "C";
+    public static final String typeD = "D";
+
+    public Produit createProduit(String type) {
+
+        switch (type) {
+
+            case typeA:
+                return new ProduitA();
+
+            case typeB:
+                return new ProduitB();
+
+            case typeC:
+                return new ProduitC();
+
+            case typeD:
+                return new ProduitD();
+
+            default:
+                throw new IllegalArgumentException(
+                    "Type de produit inconnu : " + type
+                );
+        }
+    }
+}
+
+
+========== Produit.java ==========
+
+public abstract class Produit {
+
+    public abstract void methodeproduit();
+
+}
+
+
+========== ProduitA.java ==========
+public class ProduitA extends Produit {
+
+    public ProduitA() {
+
+    }
+
+    public void methodeproduit() {
+        System.out.println("je suis un produit de type A");
+        System.out.println("produitA.methodeproduit()");
+    }
+}
+
+
+========== ProduitB.java ==========
+public class ProduitB extends Produit {
+
+    public void methodeproduit() {
+        System.out.println("je suis un produit de type B");
+        System.out.println("produitB.methodeproduit()");
+    }
+}
+
+
+========== ProduitC.java ==========
+
+public class ProduitC extends Produit {
+
+    @Override
+    public void methodeproduit() {
+        System.out.println("je suis un produit de type C");
+        System.out.println("produitC.methodeproduit()");
+    }
+}
+
+
+========== ProduitD.java ==========
+
+public class ProduitD extends Produit {
+
+    @Override
+    public void methodeproduit() {
+        System.out.println("je suis un produit de type D");
+        System.out.println("produitD.methodeproduit()");
+    }
+}
